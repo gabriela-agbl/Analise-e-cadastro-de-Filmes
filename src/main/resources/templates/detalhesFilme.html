@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Detalhes do Filme</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body 
+{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 
+{
+    color: #444;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container 
+{
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.details 
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    line-height: 1.6;
+}
+
+.details label 
+{
+    font-weight: bold;
+    color: #555;
+}
+
+.details span 
+{
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.back-link 
+{
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: bold;
+}
+
+.back-link:hover 
+{
+    text-decoration: underline;
+}
+
+.button 
+{
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 0;
+    text-decoration: none;
+    background-color: #0066cc;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.button:hover 
+{
+    background-color: #005bb5;
+}
+        </style>
+    </head>
+    <body>
+        <h1>Detalhes do Filme</h1>
+        <h2 th:text="${filme.titulo}"></h2>
+        <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
+        <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
+        <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.anoLancamento}"></span></p>
+
+        <h2>Análises</h2>
+        <ul>
+            <li th:each="analise : ${analises}">
+                <p><strong>Nota:</strong> <span th:text="${analise.nota}"></span></p>
+                <p><strong>Análise:</strong> <span th:text="${analise.analise}"></span></p>
+            </li>
+        </ul>
+
+        <h3>Adicionar Análise</h3>
+        <form action="#" th:action="@{/detalhes/{id}/adicionar-analise(id=${filme.id})}" method="post" th:object="${novaAnalise}">
+            <textarea name="analise" placeholder="Escreva sua análise" required></textarea>
+            <input type="number" name="nota" placeholder="Nota (1 a 10)" min="1" max="10" required>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <a href="/">Voltar para a Lista</a>
+    </body>
+</html>
