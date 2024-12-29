@@ -1,9 +1,18 @@
 package com.atividade_1.AnaliseFilme.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
+@Entity
+@Table(name = "Análises")
 public class Analise 
 {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @ManyToOne
+    @JoinColumn(name = "filme")
     private Filme filme;
     private String analise;
     private int nota;
@@ -12,7 +21,7 @@ public class Analise
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,6 +47,5 @@ public class Analise
 
     public void setNota(int nota) {
         this.nota = nota;
-    }
-    
+    } 
 }

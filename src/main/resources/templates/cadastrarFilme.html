@@ -5,16 +5,31 @@
         <title>Cadastrar Filme</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>S
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
     </head>
     <body>
-        <h1>Cadastrar Filme</h1>
-        <form action="/cadastrar" method="post" th:object="${filme}">
-            <input type="text" name="titulo" placeholder="Título" required>
-            <input type="text" name="sinopse" placeholder="Sinopse" required>
-            <input type="text" name="genero" placeholder="Gênero" required>
-            <input type="number" name="anoLancamento" placeholder="Ano de Lançamento" required>
-            <button type="submit">Cadastrar</button>
-        </form>    
+        <div class="container">
+            <h1>Cadastrar Filme</h1>
+            <form action="#" th:action="@{/cadastrar}" th:object="${filme}" method="POST"> 
+                    <input type="text" th:field="*{titulo}" placeholder="Insira o titulo" class="form-control mt-4 col-4"> 
+                    <span class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></span> 
+                    <input type="text" th:field="*{sinopse}" placeholder="Insira a sinopse" class="form-control mt-4 col-4"> 
+                    <span class="text-danger" th:if="${#fields.hasErrors('sinopse')}" th:errors="*{sinopse}"></span> 
+                    <input type="text" th:field="*{genero}" placeholder="Insira o gênero" class="form-control mt-4 col-4"> 
+                    <span class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></span> 
+                    <input type="number" th:field="*{ano_lancamento}" placeholder="Insira o ano de lançamento" class="form-control mt-4 col-4"> 
+                    <span class="text-danger" th:if="${#fields.hasErrors('ano_lancamento')}" th:errors="*{ano_lancamento}"></span> 
+                
+                    <button type="submit" class="btn btn-info mt-4"> Cadastrar</button> 
+            </form> 
+        
+        <a th:href="@{/}"> Retornar</a> 
+        
+        </div>
+        
+        <script src="script.js"></script>
+        
     </body>
 </html>

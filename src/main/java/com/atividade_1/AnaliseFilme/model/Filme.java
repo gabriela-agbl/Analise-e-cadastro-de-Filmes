@@ -1,19 +1,26 @@
 package com.atividade_1.AnaliseFilme.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
+@Entity
+@Table(name = "Filmes")
 public class Filme 
 {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String titulo;
     private String sinopse;
     private String genero;
-    private int anoLancamento; 
+    private Integer ano_lancamento; 
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,11 +49,11 @@ public class Filme
     }
 
     public int getAnoLancamento() {
-        return anoLancamento;
+        return ano_lancamento;
     }
 
-    public void setAnoLancamento(int anoLancamento) {
-        this.anoLancamento = anoLancamento;
+    public void setAnoLancamento(Integer ano_lancamento) {
+        this.ano_lancamento = ano_lancamento;
     }
     
 }
