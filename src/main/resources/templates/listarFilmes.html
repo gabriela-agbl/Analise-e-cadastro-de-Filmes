@@ -11,7 +11,7 @@
     <body>
         <h1>Lista de Filmes</h1>
         <ul>
-            <li th:each="filme : ${filmes}">
+            <li th:each="filme : ${listarFilmes}">
                 <span th:if="${filme != null}" th:text="${filme.titulo}"></span>
                 <a th:if="${filme != null}" th:href="@{'/detalhes/' + ${filme.id}}">Detalhes</a>
                 <a th:href="@{/atualizar/{id}(id=${filme.id})}" class="btn btn-primary">Atualizar</a>

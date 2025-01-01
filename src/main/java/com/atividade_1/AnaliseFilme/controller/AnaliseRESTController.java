@@ -31,16 +31,16 @@ public class AnaliseRESTController
     }
     
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Analise> atualizarAnalise(@PathVariable Integer id, @RequestBody Analise analise) 
+    public ResponseEntity<Analise> atualizarAnalise(@PathVariable Integer id_a, @RequestBody Analise analise) 
     {
-        var analiseAtualizada = analiseService.atualizarAnalise(id, analise);
+        var analiseAtualizada = analiseService.atualizarAnalise(id_a, analise);
         return new ResponseEntity<>(analiseAtualizada, HttpStatus.OK); 
     }
 
     @DeleteMapping("/excluir/{id}")
-    public ResponseEntity deletarAnalise(@PathVariable Integer id) 
+    public ResponseEntity deletarAnalise(@PathVariable Integer id_a) 
     {
-        analiseService.deletarAnalise(id);
+        analiseService.deletarAnalise(id_a);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -1,7 +1,9 @@
 package com.atividade_1.AnaliseFilme.controller;
 
+import com.atividade_1.AnaliseFilme.model.Analise;
 import com.atividade_1.AnaliseFilme.service.FilmeService;
 import com.atividade_1.AnaliseFilme.model.Filme;
+import com.atividade_1.AnaliseFilme.service.AnaliseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class FilmeController {
 
 @Autowired
 private FilmeService filmeService;
+
+@Autowired
+private AnaliseService analiseService;
 
 @GetMapping("/")
 public String listarFilmes(Model model) 
@@ -48,7 +53,7 @@ public String cadastrarFilme(@Valid @ModelAttribute("filme") Filme filme, Bindin
         return "cadastrarFilme";
     } 
     
-    if (filme.getId() == 0) 
+    if (filme.getId() == null) 
     {
         filmeService.cadastrarFilme(filme);
     } 
@@ -68,6 +73,44 @@ public String atualizarFilme(@PathVariable(value = "id") Integer id, Model model
     Filme filme = filmeService.getFilmeById(id);
     model.addAttribute("filme", filme);
     return "atualizarFilme";
-} 
+}
+
+@GetMapping("/detalhes/{id}")
+public String detalhesFilme(@PathVariable(value = "id") Integer id, Model model) 
+{
+    Filme filme = filmeService.getFilmeById(id);
+    model.addAttribute("filme", filme);
+    model.addAttribute("analises", analiseService.listarAnalises());
+    model.addAttribute("novaAnalise", new Analise()); // Formulário para nova análise
+    
+    return "detalhesFilme";
+}
+
+@PostMapping("/detalhes/{id}/adicionar-analise")
+public String cadastrarAnalise(@PathVariable(value = "id") Integer id, @ModelAttribute("novaAnalise") Analise novaAnalise) 
+{
+    Filme filme = filmeService.getFilmeById(id);
+    novaAnalise.setFilme(filme);
+    analiseService.adicionarAnalise(novaAnalise);
+    return "redirect:/detalhes/" + id;
+}
+
+@PostMapping("/detalhes/{id}/excluir-analise/{id_a}")
+public String excluirAnalise(@PathVariable(value = "id") Integer id, 
+                              @PathVariable(value = "id_a") Integer id_a) 
+{
+    analiseService.deletarAnalise(id_a);
+    return "redirect:/detalhes/" + id;
+}
+
+@GetMapping("/detalhes/{id}/atualizar-analise/{id_a}")
+public String atualizarAnalise(@PathVariable(value = "id") Integer id, 
+                             @PathVariable(value = "id_a") Integer id_a,
+                             @ModelAttribute Analise analiseAtualizada) 
+{
+    analiseAtualizada.setId(id_a);
+    analiseService.atualizarAnalise(id, analiseAtualizada);
+    return "atualizarAnalise";
+}
 
 }

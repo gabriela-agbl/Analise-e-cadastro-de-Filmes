@@ -14,9 +14,10 @@ public class Filme
     private String titulo;
     private String sinopse;
     private String genero;
-    private Integer ano_lancamento; 
+    @Column(name = "ano_lancamento", nullable = false)
+    private Integer anoLancamento; 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -48,12 +49,12 @@ public class Filme
         this.genero = genero;
     }
 
-    public int getAnoLancamento() {
-        return ano_lancamento;
+    public Integer getAnoLancamento() {
+        return anoLancamento;
     }
 
-    public void setAnoLancamento(Integer ano_lancamento) {
-        this.ano_lancamento = ano_lancamento;
+    public void setAnoLancamento(Integer anoLancamento) {
+        this.anoLancamento = anoLancamento;
     }
     
 }

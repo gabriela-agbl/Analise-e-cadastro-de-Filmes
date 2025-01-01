@@ -26,9 +26,9 @@ public class AnaliseService
         return analiseRepository.findAll();
     }
     
-    public Analise atualizarAnalise(Integer id, Analise analiseAtualizada) 
+    public Analise atualizarAnalise(Integer id_a, Analise analiseAtualizada) 
     {
-        Analise analise = getAnaliseById(id);
+        Analise analise = getAnaliseById(id_a);
         analise.setAnalise(analiseAtualizada.getAnalise());
         analise.setFilme(analiseAtualizada.getFilme());
         analise.setNota(analiseAtualizada.getNota());
@@ -38,14 +38,14 @@ public class AnaliseService
         return analise;
     }
     
-    public Analise getAnaliseById(Integer id) 
+    public Analise getAnaliseById(Integer id_a) 
     {
-        return analiseRepository.findById(id).orElse(null);
+        return analiseRepository.findById(id_a).orElse(null);
     }
     
-    public void deletarAnalise(Integer id) 
+    public void deletarAnalise(Integer id_a) 
     {
-        Analise analise = getAnaliseById(id);
+        Analise analise = getAnaliseById(id_a);
         analiseRepository.deleteById(analise.getId());
     }
 }

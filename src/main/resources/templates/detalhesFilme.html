@@ -5,6 +5,7 @@
         <title>Detalhes do Filme</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <style>
             body 
 {
@@ -89,13 +90,21 @@ h1
         <h2 th:text="${filme.titulo}"></h2>
         <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
         <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
-        <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.ano_lancamento}"></span></p>
+        <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.anoLancamento}"></span></p>
 
         <h2>Análises</h2>
         <ul>
             <li th:each="analise : ${analises}">
                 <p><strong>Nota:</strong> <span th:text="${analise.nota}"></span></p>
                 <p><strong>Análise:</strong> <span th:text="${analise.analise}"></span></p>
+                
+                <form th:action="@{/detalhes/{id}/excluir-analise/{id_a}(id=${filme.id}, id_a=${analise.id})}" method="POST">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+                
+                <form th:action="@{/detalhes/{id}/atualizar-analise/{id_a}(id=${filme.id}, id_a=${analise.id})}" method="POST">
+                    <button type="submit" class="btn btn-danger">Atualizar</button>
+                </form>
             </li>
         </ul>
 
