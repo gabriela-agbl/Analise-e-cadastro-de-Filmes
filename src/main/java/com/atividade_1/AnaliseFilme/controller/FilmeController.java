@@ -103,7 +103,7 @@ public String excluirAnalise(@PathVariable(value = "id") Integer id,
     return "redirect:/detalhes/" + id;
 }
 
-@GetMapping("/detalhes/{id}/atualizar-analise/{id_a}")
+@PostMapping("/detalhes/{id}/atualizar-analise/{id_a}")
 public String atualizarAnalise(@PathVariable(value = "id") Integer id, 
                              @PathVariable(value = "id_a") Integer id_a,
                              @ModelAttribute Analise analiseAtualizada) 
