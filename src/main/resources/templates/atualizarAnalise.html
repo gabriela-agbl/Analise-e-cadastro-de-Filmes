@@ -15,17 +15,16 @@
         
         <h1>Atualizar Análise</h1>
 
-        <form action="#" th:action="@{/detalhes/{id}/atualizar-analise/{id_a}(id=${filme.id}, id_a=${analise.id})}" th:object="${analise}" method="POST">
-            <label for="nota">Nota (1 a 10):</label>
-            <input type="number" id="nota" th:field="*{nota}" min="1" max="10" required>
-            
-            <label for="analise">Análise:</label>
-            <textarea id="analise" th:field="*{analise}" required></textarea>
-            
-            <button type="submit" class="btn btn-primary">Atualizar</button>
+        <form action="#" th:action="@{/detalhes/{id}/adicionar-analise(id=${filme.id})}" th:object="${analise}" method="POST"> 
+                    <input type="number" th:field="*{nota}" placeholder="Insira a nova nota" class="form-control mb-4 col-4"> 
+                    <input type="text" th:field="*{analise}" placeholder="Insira a nova analise" class="form-control mb-4 col-4"> 
+                    <input type="hidden" name="id" th:field="*{id}" /> 
+
+                    <button type="submit" class="btn btn-info col-2">Atualizar</button> 
         </form>
 
-        <a href="/detalhes/{id}" class="btn btn-secondary">Voltar</a>
+        <a th:href="@{/}"> Retornar</a> 
+        
         </div>
         
         <script src="script.js"></script>

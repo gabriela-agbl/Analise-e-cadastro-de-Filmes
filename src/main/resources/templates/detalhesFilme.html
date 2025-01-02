@@ -102,7 +102,7 @@ h1
                     <button type="submit" class="btn btn-danger">Excluir</button>
                 </form>
                 
-                <form th:action="@{/detalhes/{id}/atualizar-analise/{id_a}(id=${filme.id}, id_a=${analise.id})}" method="POST">
+                <form th:action="@{/detalhes/{id}/atualizar-analise/{id_a}(id=${filme.id}, id_a=${analise.id})}" method="GET">
                     <button type="submit" class="btn btn-danger">Atualizar</button>
                 </form>
             </li>

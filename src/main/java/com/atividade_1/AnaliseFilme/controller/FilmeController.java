@@ -103,13 +103,15 @@ public String excluirAnalise(@PathVariable(value = "id") Integer id,
     return "redirect:/detalhes/" + id;
 }
 
-@PostMapping("/detalhes/{id}/atualizar-analise/{id_a}")
+@GetMapping("/detalhes/{id}/atualizar-analise/{id_a}")
 public String atualizarAnalise(@PathVariable(value = "id") Integer id, 
                              @PathVariable(value = "id_a") Integer id_a,
-                             @ModelAttribute Analise analiseAtualizada) 
+                             Model model) 
 {
-    analiseAtualizada.setId(id_a);
-    analiseService.atualizarAnalise(id, analiseAtualizada);
+    Filme filme = filmeService.getFilmeById(id);
+    model.addAttribute("filme", filme);
+    Analise analise = analiseService.getAnaliseById(id_a);
+    model.addAttribute("analise", analise);
     return "atualizarAnalise";
 }
 

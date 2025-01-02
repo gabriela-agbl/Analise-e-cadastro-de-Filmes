@@ -15,7 +15,7 @@ public class Analise
     @JoinColumn(name = "filme")
     private Filme filme;
     private String analise;
-    private int nota;
+    private Integer nota;
 
     public Integer getId() {
         return id_a;
@@ -41,11 +41,11 @@ public class Analise
         this.analise = analise;
     }
 
-    public int getNota() {
+    public Integer getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(Integer nota) {
         this.nota = nota;
     } 
 }

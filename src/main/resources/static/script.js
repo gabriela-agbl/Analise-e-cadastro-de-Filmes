@@ -121,31 +121,26 @@ function adicionarAnalise(id) {
     .catch(error => console.error('Erro ao adicionar análise:', error));
 }
 
-// Função para editar uma análise
-function atualizarAnalise(id_a) {
-    const id = document.getElementById('id').value;
-    const nota = document.getElementById('nota').value;
-    const analise = document.getElementById('analise').value;
+//atualizar uma análise
+    $("#btn-atualizar-analise").click(function() {
+        const id_a = $("#id_a").val();
+        const nota = $("#nota").val();
+        const analise = $("#analise").val();
 
-    const dadosAtualizados = {
-        nota: parseInt(nota),
-        analise: analise
-    };
-
-    fetch(`/detalhes/${id}/atualizar-analise/${id_a}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dadosAtualizados)
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Análise atualizada com sucesso!');
-        carregarAnalises(id); // Atualiza a lista de análises
-    })
-    .catch(error => console.error('Erro ao atualizar análise:', error));
-}
+        $.ajax({
+            url: `https://localhost:8080/api/analises/atualizar/${id_a}`,
+            method: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify({ nota, analise }),
+            success: function() {
+                alert("Análise atualizada com sucesso!");
+                listarAnalises();
+            },
+            error: function() {
+                alert("Erro ao atualizar a análise. Verifique o ID e tente novamente.");
+            }
+        });
+    });
 
 // Função para excluir uma análise
 function excluirAnalise(id_a) {
