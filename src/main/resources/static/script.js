@@ -81,9 +81,7 @@ $(document).ready(function() {
         }
     });
     
-    $(document).ready(function() 
-    {
-    // Listar Filmes
+    // Listar análises
     function listarAnalises() {
         $.get("https://localhost:8080/api/analises/", function(data) {
             $("#listarAnalises").empty(); // Limpa a lista antes de renderizar
@@ -94,69 +92,45 @@ $(document).ready(function() {
         }).fail(function() {
             alert("Erro ao carregar a lista de análises.");
         });
-    }});
-
-// Função para criar uma nova análise
-function adicionarAnalise(id) {
-    const nota = document.getElementById('nota').value;
-    const analise = document.getElementById('analise').value;
-
-    const dadosAnalise = {
-        nota: parseInt(nota),
-        analise: analise
     };
 
-    fetch(`/detalhes/${id}/adicionar-analise`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dadosAnalise)
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Análise adicionada com sucesso!');
-        carregarAnalises(id); // Atualiza a lista de análises
-    })
-    .catch(error => console.error('Erro ao adicionar análise:', error));
-}
-
-//atualizar uma análise
-    $("#btn-atualizar-analise").click(function() {
-        const id_a = $("#id_a").val();
+//adicionar uma análise
+$("#btn-adicionar-analise").click(function() {
         const nota = $("#nota").val();
         const analise = $("#analise").val();
+        
+        const novaAnalise = { nota, analise };
 
-        $.ajax({
-            url: `https://localhost:8080/api/analises/atualizar/${id_a}`,
-            method: "PUT",
-            contentType: "application/json",
-            data: JSON.stringify({ nota, analise }),
-            success: function() {
-                alert("Análise atualizada com sucesso!");
-                listarAnalises();
-            },
-            error: function() {
-                alert("Erro ao atualizar a análise. Verifique o ID e tente novamente.");
-            }
+        $.post("https://localhost:8080/api/analises/cadastrar", novaAnalise, function() {
+            alert("Analise cadastrada com sucesso!");
+            listarAnalises(); // Atualiza a lista de análises
+        }).fail(function() {
+            alert("Erro ao cadastrar a análise. Tente novamente.");
         });
     });
 
-// Função para excluir uma análise
-function excluirAnalise(id_a) {
-    const id = document.getElementById('id').value;
+//excluir uma análise
+$("#btn-excluir-analise").click(function() {
+        const id_a = $("#id_a").val();
 
-    if (confirm('Tem certeza que deseja excluir esta análise?')) {
-        fetch(`/detalhes/${id}/excluir-analise/${id_a}`, {
-            method: 'DELETE'
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Análise excluída com sucesso!');
-            carregarAnalises(id); // Atualiza a lista de análises
-        })
-        .catch(error => console.error('Erro ao excluir análise:', error));
-    }
-}
+        if (!id_a) {
+            alert("Informe o ID da análise a ser excluído.");
+            return;
+        }
+
+        if (confirm("Tem certeza de que deseja excluir esta analise?")) {
+            $.ajax({
+                url: `https://localhost:8080/api/analises/excluir/${id_a}`,
+                method: "DELETE",
+                success: function() {
+                    alert("Análise excluída com sucesso!");
+                    listarAnalises();
+                },
+                error: function() {
+                    alert("Erro ao excluir a análise. Verifique o ID e tente novamente.");
+                }
+            });
+        }
+    });
     
 });

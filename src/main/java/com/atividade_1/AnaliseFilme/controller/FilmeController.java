@@ -5,6 +5,7 @@ import com.atividade_1.AnaliseFilme.service.FilmeService;
 import com.atividade_1.AnaliseFilme.model.Filme;
 import com.atividade_1.AnaliseFilme.service.AnaliseService;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,8 +81,8 @@ public String detalhesFilme(@PathVariable(value = "id") Integer id, Model model)
 {
     Filme filme = filmeService.getFilmeById(id);
     model.addAttribute("filme", filme);
-    model.addAttribute("analises", analiseService.listarAnalises());
-    model.addAttribute("novaAnalise", new Analise()); // Formulário para nova análise
+    List<Analise> analises = analiseService.getAnalisesByFilme(filme);
+    model.addAttribute("analises", analises); // Formulário para nova análise
     
     return "detalhesFilme";
 }
@@ -96,23 +97,10 @@ public String cadastrarAnalise(@PathVariable(value = "id") Integer id, @ModelAtt
 }
 
 @PostMapping("/detalhes/{id}/excluir-analise/{id_a}")
-public String excluirAnalise(@PathVariable(value = "id") Integer id, 
-                              @PathVariable(value = "id_a") Integer id_a) 
+public String excluirAnalise(Model model, @PathVariable(value = "id_a") Integer id_a, @PathVariable(value = "id") Integer id) 
 {
     analiseService.deletarAnalise(id_a);
     return "redirect:/detalhes/" + id;
-}
-
-@GetMapping("/detalhes/{id}/atualizar-analise/{id_a}")
-public String atualizarAnalise(@PathVariable(value = "id") Integer id, 
-                             @PathVariable(value = "id_a") Integer id_a,
-                             Model model) 
-{
-    Filme filme = filmeService.getFilmeById(id);
-    model.addAttribute("filme", filme);
-    Analise analise = analiseService.getAnaliseById(id_a);
-    model.addAttribute("analise", analise);
-    return "atualizarAnalise";
 }
 
 }

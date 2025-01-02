@@ -2,6 +2,7 @@ package com.atividade_1.AnaliseFilme.service;
 
 import com.atividade_1.AnaliseFilme.model.Analise;
 import com.atividade_1.AnaliseFilme.model.AnaliseRepository;
+import com.atividade_1.AnaliseFilme.model.Filme;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,22 +26,15 @@ public class AnaliseService
     {
         return analiseRepository.findAll();
     }
-    
-    public Analise atualizarAnalise(Integer id_a, Analise analiseAtualizada) 
-    {
-        Analise analise = getAnaliseById(id_a);
-        analise.setAnalise(analiseAtualizada.getAnalise());
-        analise.setFilme(analiseAtualizada.getFilme());
-        analise.setNota(analiseAtualizada.getNota());
-        
-        analiseRepository.save(analise);
-        
-        return analise;
-    }
-    
+   
     public Analise getAnaliseById(Integer id_a) 
     {
         return analiseRepository.findById(id_a).orElse(null);
+    }
+    
+    public List<Analise> getAnalisesByFilme(Filme filme) 
+    {
+        return analiseRepository.findByFilme(filme);
     }
     
     public void deletarAnalise(Integer id_a) 
