@@ -5,6 +5,7 @@
         <title>Detalhes do Filme</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <style>
             body 
 {
@@ -89,18 +90,23 @@ h1
         <h2 th:text="${filme.titulo}"></h2>
         <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
         <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
-        <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.ano_lancamento}"></span></p>
+        <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.anoLancamento}"></span></p>
 
         <h2>Análises</h2>
         <ul>
             <li th:each="analise : ${analises}">
                 <p><strong>Nota:</strong> <span th:text="${analise.nota}"></span></p>
                 <p><strong>Análise:</strong> <span th:text="${analise.analise}"></span></p>
+                
+                <form th:action="@{/detalhes/{id}/excluir-analise/{id_a}(id_a=${analise.id}, id=${filme.id})}" method="POST">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+               
             </li>
         </ul>
 
         <h3>Adicionar Análise</h3>
-        <form action="#" th:action="@{/detalhes/{id}/adicionar-analise(id=${filme.id})}" method="post" th:object="${novaAnalise}">
+        <form action="#" th:action="@{/detalhes/{id}/adicionar-analise(id=${filme.id})}" method="post" th:object="${analise}">
             <textarea name="analise" placeholder="Escreva sua análise" required></textarea>
             <input type="number" name="nota" placeholder="Nota (1 a 10)" min="1" max="10" required>
             <button type="submit">Enviar</button>

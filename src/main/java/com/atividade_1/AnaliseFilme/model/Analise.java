@@ -10,19 +10,19 @@ public class Analise
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id_a;
     @ManyToOne
     @JoinColumn(name = "filme")
     private Filme filme;
     private String analise;
-    private int nota;
+    private Integer nota;
 
-    public int getId() {
-        return id;
+    public Integer getId() {
+        return id_a;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer id_a) {
+        this.id_a = id_a;
     }
 
     public Filme getFilme() {
@@ -41,11 +41,11 @@ public class Analise
         this.analise = analise;
     }
 
-    public int getNota() {
+    public Integer getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(Integer nota) {
         this.nota = nota;
     } 
 }

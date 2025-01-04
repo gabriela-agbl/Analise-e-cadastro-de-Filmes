@@ -30,17 +30,10 @@ public class AnaliseRESTController
         return new ResponseEntity<>(novaAnalise, HttpStatus.CREATED);
     }
     
-    @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Analise> atualizarAnalise(@PathVariable Integer id, @RequestBody Analise analise) 
+    @DeleteMapping("/excluir/{id_a}")
+    public ResponseEntity deletarAnalise(@PathVariable Integer id_a) 
     {
-        var analiseAtualizada = analiseService.atualizarAnalise(id, analise);
-        return new ResponseEntity<>(analiseAtualizada, HttpStatus.OK); 
-    }
-
-    @DeleteMapping("/excluir/{id}")
-    public ResponseEntity deletarAnalise(@PathVariable Integer id) 
-    {
-        analiseService.deletarAnalise(id);
+        analiseService.deletarAnalise(id_a);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

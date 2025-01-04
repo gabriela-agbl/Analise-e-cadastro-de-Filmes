@@ -19,8 +19,8 @@
                     <span class="text-danger" th:if="${#fields.hasErrors('sinopse')}" th:errors="*{sinopse}"></span> 
                     <input type="text" th:field="*{genero}" placeholder="Insira o gênero" class="form-control mt-4 col-4"> 
                     <span class="text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></span> 
-                    <input type="number" th:field="*{ano_lancamento}" placeholder="Insira o ano de lançamento" class="form-control mt-4 col-4"> 
-                    <span class="text-danger" th:if="${#fields.hasErrors('ano_lancamento')}" th:errors="*{ano_lancamento}"></span> 
+                    <input type="number" th:field="*{anoLancamento}" placeholder="Insira o ano de lançamento" class="form-control mt-4 col-4"> 
+                    <span class="text-danger" th:if="${#fields.hasErrors('anoLancamento')}" th:errors="*{anoLancamento}"></span> 
                 
                     <button type="submit" class="btn btn-info mt-4"> Cadastrar</button> 
             </form> 
