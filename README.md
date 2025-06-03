@@ -1,6 +1,9 @@
-# 🎬 Projeto de Cadastro e Análise de Filmes
+<div align="center">
+
+<h1>🎬 Projeto de Cadastro e Análise de Filmes</h1>
 
 Bem-vindo ao **Projeto de Cadastro e Análise de Filmes**! Este projeto foi desenvolvido utilizando **Spring Boot** e **Thymeleaf** para criar uma aplicação web capaz de cadastrar e gerenciar informações sobre filmes. 📽️
+</div>
 
 ## 📝 Funcionalidades
 - 📥 **Cadastro de filmes e análises**: Permite inserir informações como título, ano de lançamento, gênero, sinopse e nota.
