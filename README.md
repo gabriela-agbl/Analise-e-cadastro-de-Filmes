@@ -5,13 +5,19 @@
 Bem-vindo ao **Projeto de Cadastro e Análise de Filmes**! Este projeto foi desenvolvido utilizando **Spring Boot** e **Thymeleaf** para criar uma aplicação web capaz de cadastrar e gerenciar informações sobre filmes. 📽️
 </div>
 
-## 📝 Funcionalidades
+<div align="center">
+<h2>📝 Funcionalidades</h2>
+</div>
+
 - 📥 **Cadastro de filmes e análises**: Permite inserir informações como título, ano de lançamento, gênero, sinopse e nota.
 - 🖋️ **Validação de campos**: Garante que os dados fornecidos estão corretos antes de salvar no banco de dados.
 - 🔍 **Listagem de filmes e análises**: Exibe uma tabela com todos os filmes e análises cadastrados. Também exibe os detalhes de cada filme em outra página. 
 - 🛠️ **Edição e exclusão**: Atualize ou remova informações de filmes e análises existentes.
 
-## 🛠️ Tecnologias Utilizadas
+<div align="center">
+<h2>🛠️ Tecnologias Utilizadas</h2>
+</div>
+
 - **Java** ☕
 - **CSS e JavaScript** 🌐 (para personalização e interatividade)
 - **Spring Boot** 🚀
@@ -21,7 +27,10 @@ Bem-vindo ao **Projeto de Cadastro e Análise de Filmes**! Este projeto foi dese
 - **MySQL**
 - **API**
 
-## 📂 Estrutura do Projeto
+<div align="center">
+<h2>📂 Estrutura do Projeto</h2>
+</div>
+
 ```plaintext
 src/
 ├── main/
@@ -40,7 +49,10 @@ src/
 └── test/
     └── java/                 # Testes unitários
 ```
-## 🚀 Como Rodar o Projeto
+
+<div align="center">
+<h2>🚀 Como Rodar o Projeto</h2>
+</div>
 
 Siga os passos abaixo para executar o projeto localmente:
 
@@ -65,15 +77,19 @@ mvn spring-boot:run
 
 5. **Acesse no navegador: _Acesse a aplicação em http://localhost:8080_.**
 
-## ✨ Funcionalidades Finais a Implementar
+<div align="center">
+<h2>✨ Funcionalidades Finais a Implementar</h2>
+</div>
 
-📊 Filtro de filmes por gênero ou ano.
+- 📊 Filtro de filmes por gênero ou ano.
 
-🌐 Internacionalização (i18n) para suporte a múltiplos idiomas.
+- 🌐 Internacionalização (i18n) para suporte a múltiplos idiomas.
 
-## 🤝 Contribuindo
+<div align="center">
+<h2>🤝 Contribuindo</h2>
 
 Contribuições são bem-vindas! Siga os passos abaixo:
+</div>
 
 1. Faça um fork do repositório.
 2. Crie uma branch para sua feature:
@@ -95,7 +111,10 @@ git push origin minha-feature
 ```
 5. Abra um Pull Request.
 
-## 📝 Licença
+<div align="center">
+<h2>📝 Licença</h2>
    Este projeto foi desenvolvido para fins educacionais e está disponível para uso e modificação conforme necessário.
 
    Feito por [Gabriela Rodrigues](https://github.com/Agbl09)
+   
+</div>
