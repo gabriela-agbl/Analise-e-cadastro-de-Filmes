@@ -75,7 +75,7 @@ cd AnaliseFilme
 mvn spring-boot:run
 ```
 
-5. **Acesse no navegador: _Acesse a aplicação em http://localhost:8080_.**
+5. **Acesse no navegador: _Acesse a aplicação em `http://localhost:8080`.**
 
 <div align="center">
 <h2>✨ Funcionalidades Finais a Implementar</h2>
