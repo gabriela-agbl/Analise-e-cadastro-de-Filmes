@@ -59,7 +59,7 @@ Siga os passos abaixo para executar o projeto localmente:
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/Agbl09/Analise-e-cadastro-de-Filmes.git
+git clone https://github.com/gabriela-agbl/Analise-e-cadastro-de-Filmes.git
 ```
 
 2. **Acesse o diretório do projeto:**
