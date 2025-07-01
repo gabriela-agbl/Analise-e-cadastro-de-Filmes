@@ -1,8 +1,8 @@
 <div align="center">
 
-<h1>🎬 Projeto de Cadastro e Análise de Filmes</h1>
+<h1>🎬 Cadastro e Análise de Filmes</h1>
 
-Bem-vindo ao **Projeto de Cadastro e Análise de Filmes**! Este projeto foi desenvolvido utilizando **Spring Boot** e **Thymeleaf** para criar uma aplicação web capaz de cadastrar e gerenciar informações sobre filmes. 📽️
+Bem-vindo ao **Cadastro e Análise de Filmes**! Este projeto foi desenvolvido utilizando **Spring Boot** e **Thymeleaf** para criar uma aplicação web capaz de cadastrar e gerenciar informações sobre filmes. 📽️
 </div>
 
 <div align="center">
