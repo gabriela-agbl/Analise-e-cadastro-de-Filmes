@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link th:href="@{'/css/' + ${css} + '.css'}" rel="stylesheet" type="text/css"/>
+        <script src="script.js" defer></script>
     </head>
     <body>
         
@@ -34,7 +35,5 @@
         
         <a href="/cadastrar">Cadastrar Novo Filme</a>
         <p>O estilo atual da página é <strong th:text="${css}" /></p> 
-        <script src="script.js"></script>
-       
     </body>
 </html>
