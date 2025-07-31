@@ -19,11 +19,11 @@ Bem-vindo ao **Cadastro e Análise de Filmes**! Este projeto foi desenvolvido ut
 </div>
 
 - **Java** ☕
-- **CSS e JavaScript** 🌐 (para personalização e interatividade)
+- **CSS e JavaScript** 🌐
 - **Spring Boot** 🚀
 - **Thymeleaf** 🖼️
 - **Bootstrap** 🎨
-- **Banco de dados H2** 🗄️ (em memória)
+- **Banco de dados H2** 🗄️
 - **MySQL**
 - **API**
 
